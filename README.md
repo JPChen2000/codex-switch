@@ -5,7 +5,7 @@
 ## 一键安装
 
 ```bash
-curl -fsSL https://github.com/JPChen2000/codex-switch/codex-switch -o ~/.local/bin/codex-switch && chmod +x ~/.local/bin/codex-switch
+curl -fsSL https://github.com/JPChen2000/codex-switch/blob/main/codex-switch -o ~/.local/bin/codex-switch && chmod +x ~/.local/bin/codex-switch
 ```
 
 安装到你使用的PATH路径，例如 `~/.local/bin/codex-switch`
