@@ -5,11 +5,21 @@
 ## 一键安装
 
 ```bash
-curl -fsSL https://github.com/JPChen2000/codex-switch/blob/main/codex-switch -o ~/.local/bin/codex-switch && chmod +x ~/.local/bin/codex-switch
+mkdir -p ~/.local/bin && curl -fsSL https://raw.githubusercontent.com/JPChen2000/codex-switch/main/codex-switch -o ~/.local/bin/codex-switch && chmod +x ~/.local/bin/codex-switch
 ```
 
-安装到你使用的PATH路径，例如 `~/.local/bin/codex-switch`
-如果安装后任然找不到指令，请检查是否添加了PATH环境变量。
+### 自动配置 PATH
+
+```bash
+case "$(basename "$SHELL")" in
+  zsh) rcfile=~/.zshrc ;;
+  *)   rcfile=~/.bashrc ;;
+esac
+grep -q '.local/bin' "$rcfile" 2>/dev/null || echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$rcfile"
+source "$rcfile"
+```
+
+安装到你使用的PATH路径，例如 `~/.local/bin/codex-switch`。脚本会自动检测当前 Shell（bash/zsh），将 `~/.local/bin` 添加到对应配置文件（`.bashrc` 或 `.zshrc`）的 PATH 中。如果配置后仍找不到指令，请重新打开终端。
 
 ## 用法
 
